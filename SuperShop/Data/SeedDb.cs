@@ -24,20 +24,40 @@ namespace SuperShop.Data
         {
             await _context.Database.EnsureCreatedAsync();
 
-            var user = await _userHelper.GetUserByEmailAsync("rafaasfs@gmail.com");
-            if (user == null) 
+            //var user = await _userHelper.GetUserByEmailAsync("rafaasfs@gmail.com");
+            var user = await _userHelper.GetUserByEmailAsync("raquelalexandramendes@gmail.com");
+
+            //if (user == null) 
+            //{
+            //    user = new User
+            //    {
+            //        FirstName = "Rafael",
+            //        LastName = "Santos",
+            //        Email = "rafaasfs@gmail.com",
+            //        UserName = "rafaasfs@gmail.com",
+            //        PhoneNumber = "212343555"
+            //    };
+
+            //    var result = await _userHelper.AddUserAsync(user, "123456");
+            //    if(result != IdentityResult.Success)
+            //    {
+            //        throw new InvalidOperationException("Could not create the user in seeder");
+            //    }
+            //}
+
+            if (user == null)
             {
                 user = new User
                 {
-                    FirstName = "Rafael",
-                    LastName = "Santos",
-                    Email = "rafaasfs@gmail.com",
-                    UserName = "rafaasfs@gmail.com",
+                    FirstName = "Raquel",
+                    LastName = "Mendes",
+                    Email = "raquelalexandramendes@gmail.com",
+                    UserName = "raquelalexandramendes@gmail.com",
                     PhoneNumber = "212343555"
                 };
 
                 var result = await _userHelper.AddUserAsync(user, "123456");
-                if(result != IdentityResult.Success)
+                if (result != IdentityResult.Success)
                 {
                     throw new InvalidOperationException("Could not create the user in seeder");
                 }
