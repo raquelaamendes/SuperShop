@@ -53,7 +53,8 @@ namespace SuperShop.Controllers
         }
 
         // GET: Products/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")] //Indicar o role que pode fazer esta ação
+        //[Authorize(Roles = "Admin, Customer, ...")] - Como fazer para vários roles
         public IActionResult Create()
         {
             return View();
