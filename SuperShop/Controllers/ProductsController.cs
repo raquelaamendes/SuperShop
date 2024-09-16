@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -15,17 +16,20 @@ namespace SuperShop.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly IUserHelper _userHelper;
-        private readonly IBlobHelper _blobHelper;
+        private readonly IImageHelper _imageHelper;
+        //private readonly IBlobHelper _blobHelper;
         private readonly IConverterHelper _converterHelper;
 
         public ProductsController(IProductRepository productRepository,
                                   IUserHelper userHelper,
-                                  IBlobHelper blobHelper,
+                                  //IBlobHelper blobHelper,
+                                  IImageHelper imageHelper,
                                   IConverterHelper converterHelper)
         {
             _productRepository = productRepository;
             _userHelper = userHelper;
-            _blobHelper = blobHelper;
+            //_blobHelper = blobHelper;
+            _imageHelper = imageHelper;
             _converterHelper = converterHelper;
         }
 
@@ -69,14 +73,14 @@ namespace SuperShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                Guid imageId = Guid.Empty;
+                var path = string.Empty;
 
                 if (model.ImageFile != null && model.ImageFile.Length > 0)
                 {
-                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "products");
+                    path = await _imageHelper.UploadImageAsync(model.ImageFile, "products");
                 }
 
-                var product = _converterHelper.ToProduct(model, imageId, true);
+                var product = _converterHelper.ToProduct(model, path, true);
 
                 product.User = await _userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                 await _productRepository.CreateAsync(product);
@@ -116,14 +120,14 @@ namespace SuperShop.Controllers
             {
                 try
                 {
-                    Guid imageId = model.ImageId;
+                    var path = model.ImageUrl;
 
                     if (model.ImageFile != null && model.ImageFile.Length > 0)
                     {
-                        imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "products");
+                        path = await _imageHelper.UploadImageAsync(model.ImageFile, "products");
                     }
 
-                    var product = _converterHelper.ToProduct(model, imageId, false);
+                    var product = _converterHelper.ToProduct(model, path, false);
 
                     product.User = await _userHelper.GetUserByEmailAsync(this.User.Identity.Name);
                     await _productRepository.UpdateAsync(product);

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 using SuperShop.Data.Entities;
 using SuperShop.Models;
 using System.Collections.Generic;
