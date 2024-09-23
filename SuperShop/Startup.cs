@@ -105,7 +105,7 @@ namespace SuperShop
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

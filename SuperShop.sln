@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop", "SuperShop\SuperShop.csproj", "{F024320E-847D-42E4-8791-87140A7489F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Prism", "SuperShop.Prism\SuperShop.Prism\SuperShop.Prism.csproj", "{8E3A40E4-A289-4900-BC74-AEE2BD155988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.Prism", "SuperShop.Prism\SuperShop.Prism\SuperShop.Prism.csproj", "{8E3A40E4-A289-4900-BC74-AEE2BD155988}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Prism.Android", "SuperShop.Prism\SuperShop.Prism.Android\SuperShop.Prism.Android.csproj", "{1B483776-EC6B-4F10-B7F3-D6182F77EA10}"
 EndProject

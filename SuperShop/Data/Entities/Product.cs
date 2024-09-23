@@ -38,10 +38,10 @@ namespace SuperShop.Data.Entities
             {
                 if (string.IsNullOrEmpty(ImageUrl))
                 {
-                    return null;
+                    return $"http://localhost:28221//images/noImage.png";
                 }
 
-                return $"https://localhost:44314/{ImageUrl.Substring(1)}";
+                return $"http://localhost:28221/{ImageUrl.Substring(1)}";
             }
         }
 
